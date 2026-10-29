@@ -5,7 +5,7 @@ from tkinter.scrolledtext import ScrolledText
 import funcs as func
 
 root = tk.Tk()
-root.title("Notepad")
+root.title("LiteNotepad")
 root.geometry("600x400")
 root.minsize(600, 400)
 
@@ -62,4 +62,6 @@ def load_shortcut(event):
 workspace.bind("<Control-o>", load_shortcut)
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        root.after(0, lambda: func.load(workspace=workspace, file_path=sys.argv[1]))
     root.mainloop()

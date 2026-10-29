@@ -3,12 +3,13 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 from binaryornot.helpers import is_binary_string
 
-def load(workspace):
-    desktop = os.path.join(os.path.expanduser("~"), "Desktop")
-    file_path = filedialog.askopenfilename(
-        title="Select a file to edit",
-        initialdir=desktop
-    )
+def load(workspace, file_path=None):
+    if file_path is None:
+        desktop = os.path.join(os.path.expanduser("~"), "Desktop")
+        file_path = filedialog.askopenfilename(
+            title="Select a file to edit",
+            initialdir=desktop
+        )
 
     if not file_path:
         return
