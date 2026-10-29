@@ -10,8 +10,43 @@ def save(workspace):
         desktop = os.path.join(os.path.expanduser("~"), "Desktop")
         path = filedialog.asksaveasfilename(
             title="Save file",
+            initialdir=desktop,
             defaultextension=".txt",
-            initialdir=desktop
+            filetypes=[
+                ("Text File", "*.txt"),
+                ("All Files", "*.*"),
+                ("Python", "*.py"),
+                ("C", "*.c"),
+                ("C Header", "*.h"),
+                ("C++", "*.cpp"),
+                ("C++ Header", "*.hpp"),
+                ("C#", "*.cs"),
+                ("Java", "*.java"),
+                ("JavaScript", "*.js"),
+                ("TypeScript", "*.ts"),
+                ("HTML", "*.html"),
+                ("CSS", "*.css"),
+                ("PHP", "*.php"),
+                ("Ruby", "*.rb"),
+                ("Go", "*.go"),
+                ("Rust", "*.rs"),
+                ("Swift", "*.swift"),
+                ("Kotlin", "*.kt"),
+                ("Lua", "*.lua"),
+                ("SQL", "*.sql"),
+                ("Batch File", "*.bat"),
+                ("PowerShell", "*.ps1"),
+                ("Shell Script", "*.sh"),
+                ("JSON", "*.json"),
+                ("XML", "*.xml"),
+                ("YAML", "*.yaml"),
+                ("TOML", "*.toml"),
+                ("INI", "*.ini"),
+                ("CSV", "*.csv"),
+                ("Markdown", "*.md"),
+                ("Log File", "*.log"),
+                ("Inno Setup Script", "*.iss")
+            ]
         )
 
         if not path:
