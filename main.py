@@ -49,6 +49,7 @@ menu.add_command(label="Redo", command=lambda: func.redo(workspace=workspace))
 menu.add_command(label="Close File", command=lambda: func.close(workspace=workspace))
 menu.add_command(label="Change Font", command=lambda: func.change_font_face(config_file=config_file, workspace=workspace, parent=root))
 menu.add_command(label="Change Font Size", command=lambda: func.change_font_size(config_file=config_file, workspace=workspace, parent=root))
+menu.add_command(label="Preview HTML/MD", command=lambda: func.render(workspace=workspace, parent=root))
 menu.add_command(label="Exit Notepad", command=root.quit)
 
 root.configure(menu=menu)
@@ -76,6 +77,8 @@ Ctrl + Shift + Z: Redo
 Ctrl + F: Change Font Face
 Ctrl + Shift + F: Change Font Size
 
+Ctrl + R: Preview HTML and/or Markdown
+
 "Load" looks a little different since Tkinter has it's own Ctrl+O shortcut which adds a new line
 in this software's "workspace".
 '''
@@ -84,13 +87,15 @@ root.bind("<Control-s>", lambda event: menu.invoke("Save"))
 root.bind("<Control-w>", lambda event: menu.invoke("Close File"))
 root.bind("<Control-q>", lambda event: menu.invoke("Exit Notepad"))
 
+workspace.bind("<Control-z>", lambda event: menu.invoke("Undo"))
+workspace.bind("<Control-Z>", lambda event: menu.invoke("Redo"))
+workspace.bind("<Control-Shift-z>", lambda event: menu.invoke("Redo"))
+
 root.bind("<Control-f>", lambda event: menu.invoke("Change Font"))
 root.bind("<Control-Shift-f>", lambda event: menu.invoke("Change Font Size"))
 root.bind("<Control-Shift-F>", lambda event: menu.invoke("Change Font Size"))
 
-workspace.bind("<Control-z>", lambda event: menu.invoke("Undo"))
-workspace.bind("<Control-Z>", lambda event: menu.invoke("Redo"))
-workspace.bind("<Control-Shift-z>", lambda event: menu.invoke("Redo"))
+root.bind("<Control-r>", lambda event: menu.invoke("Preview HTML/MD"))
 
 def load_shortcut(event):
     menu.invoke("Load")

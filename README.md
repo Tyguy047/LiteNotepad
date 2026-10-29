@@ -13,3 +13,4 @@
 - Ctrl + Shift + Z: Redo
 - Ctrl + F: Change Font
 - Ctrl + Shift + F: Change Font Size
+- Ctrl + R: Preview HTML and/or Markdown
