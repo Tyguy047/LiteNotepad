@@ -11,3 +11,5 @@
 - Ctrl + Q: Exit Notepad
 - Ctrl + Z: Undo
 - Ctrl + Shift + Z: Redo
+- Ctrl + F: Change Font
+- Ctrl + Shift + F: Change Font Size

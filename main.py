@@ -73,13 +73,20 @@ Ctrl + Q: Exit Notepad
 Ctrl + Z: Undo
 Ctrl + Shift + Z: Redo
 
-Load looks a little different since Tkinter has it's own Ctrl+O shortcut which adds a new line
+Ctrl + F: Change Font Face
+Ctrl + Shift + F: Change Font Size
+
+"Load" looks a little different since Tkinter has it's own Ctrl+O shortcut which adds a new line
 in this software's "workspace".
 '''
 
 root.bind("<Control-s>", lambda event: menu.invoke("Save"))
 root.bind("<Control-w>", lambda event: menu.invoke("Close File"))
 root.bind("<Control-q>", lambda event: menu.invoke("Exit Notepad"))
+
+root.bind("<Control-f>", lambda event: menu.invoke("Change Font"))
+root.bind("<Control-Shift-f>", lambda event: menu.invoke("Change Font Size"))
+root.bind("<Control-Shift-F>", lambda event: menu.invoke("Change Font Size"))
 
 workspace.bind("<Control-z>", lambda event: menu.invoke("Undo"))
 workspace.bind("<Control-Z>", lambda event: menu.invoke("Redo"))
