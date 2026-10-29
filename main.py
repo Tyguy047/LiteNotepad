@@ -8,7 +8,6 @@ root = tk.Tk()
 root.title("Notepad")
 root.geometry("600x400")
 root.minsize(600, 400)
-root.resizable(False, False)
 
 def resource(name):
     base = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
@@ -31,7 +30,7 @@ class Editor(ScrolledText):
     file_path = None
 
 workspace = Editor(root, undo=True, maxundo=-1)
-workspace.pack(padx=10, pady=10)
+workspace.pack(fill="both", expand=True, padx=10, pady=10)
 workspace.file_path = None
 
 '''
