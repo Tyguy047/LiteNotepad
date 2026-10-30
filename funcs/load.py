@@ -32,4 +32,6 @@ def load(workspace, file_path=None):
     workspace.delete("1.0", "end")
     workspace.insert("1.0", content)
     workspace.file_path = file_path
+    workspace.saved = True
+    workspace.edit_modified(False)
     return

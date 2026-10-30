@@ -50,12 +50,13 @@ menu.add_command(label="Close File", command=lambda: func.close(workspace=worksp
 menu.add_command(label="Change Font", command=lambda: func.change_font_face(config_file=config_file, workspace=workspace, parent=root))
 menu.add_command(label="Change Font Size", command=lambda: func.change_font_size(config_file=config_file, workspace=workspace, parent=root))
 menu.add_command(label="Preview HTML/MD", command=lambda: func.render(workspace=workspace, parent=root))
-menu.add_command(label="Exit Notepad", command=root.quit)
+menu.add_command(label="Exit Notepad", command=lambda: func.close_app(workspace=workspace, parent=root))
 
 root.configure(menu=menu)
 
 class Editor(ScrolledText):
     file_path = None
+    saved = True
 
 FONT_SIZE = int(func.font_size(config_file=config_file))
 FONT_FACE = str(func.font_face(config_file=config_file))
@@ -63,6 +64,13 @@ FONT_FACE = str(func.font_face(config_file=config_file))
 workspace = Editor(root, undo=True, maxundo=-1, font=(FONT_FACE, FONT_SIZE))
 workspace.pack(fill="both", expand=True, padx=10, pady=10)
 workspace.file_path = None
+
+def on_modified(event):
+    if workspace.edit_modified():
+        workspace.saved = False
+        workspace.edit_modified(False)
+
+workspace.bind("<<Modified>>", on_modified)
 
 '''
 Shortcuts:
@@ -107,4 +115,5 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         root.after(0, lambda: func.load(workspace=workspace, file_path=sys.argv[1]))
 
+    root.protocol("WM_DELETE_WINDOW", lambda: func.close_app(workspace=workspace, parent=root))
     root.mainloop()

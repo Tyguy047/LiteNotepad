@@ -5,6 +5,7 @@ from .undo import undo
 from .redo import redo
 from .fonts import font_face, font_size, change_font_face, change_font_size
 from .render import render
+from .exit import close_app
 
 __all__ = [
     "save",
@@ -16,5 +17,6 @@ __all__ = [
     "font_size",
     "change_font_face",
     "change_font_size",
-    "render"
+    "render",
+    "close_app"
 ]

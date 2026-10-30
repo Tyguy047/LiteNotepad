@@ -57,5 +57,6 @@ def save(workspace):
     with open(path, "w", encoding="utf-8") as file:
         file.write(content)
 
+    workspace.saved = True
     tk.messagebox.showinfo("Save", "File saved successfully!")
     return
