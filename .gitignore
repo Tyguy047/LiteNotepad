@@ -5,3 +5,5 @@ build/
 *.spec
 *.iss
 *.json
+__pycache__/
+*.pyc
