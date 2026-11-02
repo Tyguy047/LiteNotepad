@@ -4,6 +4,13 @@ from tkinter import filedialog, messagebox
 from binaryornot.helpers import is_binary_string
 
 def load(workspace, file_path=None):
+    if not workspace.saved:
+        answer = messagebox.askyesno(
+            title="Unsaved Changes",
+            message="You have unsaved changes. Open another file anyway?")
+        if not answer:
+            return
+
     if file_path is None:
         desktop = os.path.join(os.path.expanduser("~"), "Desktop")
         file_path = filedialog.askopenfilename(
@@ -33,5 +40,6 @@ def load(workspace, file_path=None):
     workspace.insert("1.0", content)
     workspace.file_path = file_path
     workspace.saved = True
+    workspace.edit_reset()
     workspace.edit_modified(False)
     return
