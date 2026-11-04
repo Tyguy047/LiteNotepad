@@ -1,4 +1,5 @@
 import os
+import sys
 import tkinter as tk
 from tkinter import messagebox, filedialog
 
@@ -11,7 +12,7 @@ def save(workspace):
         path = filedialog.asksaveasfilename(
             title="Save file",
             initialdir=desktop,
-            defaultextension=".txt",
+            defaultextension=".txt" if sys.platform == "win32" else "",
             filetypes=[
                 ("Text File", "*.txt"),
                 ("All Files", "*.*"),

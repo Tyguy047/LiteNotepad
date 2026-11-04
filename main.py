@@ -38,7 +38,13 @@ def resource(name):
     base = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
     return os.path.join(base, name)
 
-root.iconbitmap(default=resource("assets/images/icon.ico"))
+if sys.platform == "win32":
+    root.iconbitmap(default=resource("assets/images/icon.ico"))
+
+else:
+    icon = tk.PhotoImage(file=resource("assets/images/icon.png"))
+    root.iconphoto(True, icon)
+    root._icon = icon
 
 menu = tk.Menu(root)
 

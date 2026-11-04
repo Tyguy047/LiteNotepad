@@ -1,7 +1,12 @@
 import os
+import sys
 import PyInstaller.__main__
 
-icon = "assets/images/icon.ico"
+if sys.platform == "win32":
+    icon = "assets/images/icon.ico"
+
+else:
+    icon = "assets/images/icon.png"
 
 PyInstaller.__main__.run([
     "main.py",
